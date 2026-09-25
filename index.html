@@ -1,33 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Un Espacio para ti, Jhos </title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Un espacio para ti, Jhos </title>
+
+
+<!-- =========================================
+     VISTA PREVIA
+========================================= -->
+
+<meta
+property="og:title"
+content="Un espacio para ti, Jhos "
+>
+
+<meta
+property="og:description"
+content="Qué gusto saber que pasaste por aquí."
+>
+
+<meta
+property="og:type"
+content="website"
+>
+
+<meta
+name="theme-color"
+content="#050505"
+>
+
 
 <style>
 
 /* =========================================================
-   CONFIGURACIÓN GENERAL
+   GENERAL
 ========================================================= */
 
+:root{
+
+    --negro:#050505;
+    --negro2:#0b0a07;
+
+    --dorado:#e2bb59;
+    --dorado-claro:#ffe49a;
+    --dorado-suave:#b79343;
+
+    --blanco:#f7f2e7;
+    --gris:#aaa396;
+
+}
+
+
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
 }
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
+
 body{
+
     min-height:100vh;
+
     overflow-x:hidden;
-    background:#020202;
-    color:#fff;
-    font-family:"Segoe UI",Arial,sans-serif;
+
+    color:var(--blanco);
+
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+
+    background:
+
+    radial-gradient(
+        circle at 18% 17%,
+        rgba(229,184,70,.10),
+        transparent 27%
+    ),
+
+    radial-gradient(
+        circle at 83% 75%,
+        rgba(255,202,56,.07),
+        transparent 30%
+    ),
+
+    linear-gradient(
+        145deg,
+        #020202,
+        #090805 48%,
+        #020202
+    );
+
 }
 
 
@@ -36,56 +118,252 @@ body{
 ========================================================= */
 
 .fondo{
+
     position:fixed;
+
     inset:0;
+
+    pointer-events:none;
+
     z-index:-10;
 
+}
+
+
+.fondo::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
     background:
-        radial-gradient(circle at 50% 75%,
-        rgba(255,184,0,.12),
-        transparent 38%),
 
-        radial-gradient(circle at 20% 20%,
-        rgba(255,220,70,.06),
-        transparent 30%),
+    radial-gradient(
+        circle at 50% 35%,
+        rgba(228,184,68,.055),
+        transparent 30%
+    );
 
-        linear-gradient(
-            180deg,
-            #020202,
-            #070602 55%,
-            #020202
-        );
+    animation:
+    respirarFondo
+    6s ease-in-out infinite;
+
+}
+
+
+@keyframes respirarFondo{
+
+    0%,
+    100%{
+
+        opacity:.45;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
 }
 
 
 /* =========================================================
-   LUCES DE FONDO
+   LÍNEAS DECORATIVAS
 ========================================================= */
 
-.luz{
+.linea{
+
     position:fixed;
-    border-radius:50%;
-    background:#ffd94a;
+
+    width:42vw;
+
+    height:1px;
+
     pointer-events:none;
 
-    box-shadow:
-        0 0 8px #ffd94a,
-        0 0 18px rgba(255,217,74,.5);
+    opacity:.55;
 
-    animation:brillar 3s ease-in-out infinite alternate;
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(225,187,78,.30),
+        transparent
+    );
+
+    z-index:-5;
+
 }
 
-@keyframes brillar{
 
-    from{
-        opacity:.1;
-        transform:scale(.6);
+.linea.uno{
+
+    top:16%;
+    left:-10%;
+
+    transform:
+    rotate(-18deg);
+
+}
+
+
+.linea.dos{
+
+    bottom:14%;
+    right:-10%;
+
+    transform:
+    rotate(-18deg);
+
+}
+
+
+/* =========================================================
+   PARTÍCULAS
+========================================================= */
+
+#particulas{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:-2;
+
+}
+
+
+.particula{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:
+    #f4ce6b;
+
+    box-shadow:
+
+    0 0 7px
+    rgba(255,213,103,.7);
+
+    opacity:0;
+
+    animation:
+    flotarParticula
+    linear infinite;
+
+}
+
+
+@keyframes flotarParticula{
+
+    0%{
+
+        transform:
+        translateY(105vh)
+        scale(.5);
+
+        opacity:0;
+
     }
 
-    to{
-        opacity:.8;
-        transform:scale(1.3);
+
+    15%{
+
+        opacity:.65;
+
     }
+
+
+    80%{
+
+        opacity:.25;
+
+    }
+
+
+    100%{
+
+        transform:
+        translateY(-15vh)
+        scale(1.1);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTROL DE MÚSICA
+========================================================= */
+
+#botonMusica{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    width:46px;
+    height:46px;
+
+    border-radius:50%;
+
+    border:
+
+    1px solid
+    rgba(227,187,82,.37);
+
+
+    background:
+
+    rgba(8,8,7,.72);
+
+
+    color:#efd998;
+
+    cursor:pointer;
+
+    backdrop-filter:
+    blur(12px);
+
+
+    box-shadow:
+
+    0 8px 30px
+    rgba(0,0,0,.45);
+
+
+    transition:
+    .3s ease;
+
+    z-index:200;
+
+}
+
+
+#botonMusica:hover{
+
+    transform:
+    scale(1.07);
+
+    border-color:
+    rgba(241,205,108,.7);
 
 }
 
@@ -95,550 +373,641 @@ body{
 ========================================================= */
 
 .pagina{
-    min-height:100vh;
+
+    width:
+    min(
+        1180px,
+        calc(100% - 38px)
+    );
+
+    margin:auto;
+
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.portada{
+
+    min-height:66vh;
 
     display:flex;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    padding:
+
+    90px 4%
+    60px;
+
+}
+
+
+.portada-contenido{
+
+    max-width:720px;
+
+    text-align:left;
+
+    animation:
+    entradaPortada
+    1.5s ease;
+
+}
+
+
+@keyframes entradaPortada{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+.volumen{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#b79a59;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    letter-spacing:4px;
+
+    margin-bottom:28px;
+
+}
+
+
+.volumen::before{
+
+    content:"";
+
+    width:35px;
+    height:1px;
+
+    background:
+    var(--dorado);
+
+}
+
+
+.portada h1{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+
+    font-size:
+
+    clamp(
+        48px,
+        8vw,
+        92px
+    );
+
+
+    font-weight:400;
+
+    line-height:1;
+
+    letter-spacing:-2px;
+
+    color:#f7f1e5;
+
+    margin-bottom:27px;
+
+}
+
+
+.portada h1 span{
+
+    color:
+    var(--dorado);
+
+    text-shadow:
+
+    0 0 30px
+    rgba(231,187,68,.15);
+
+}
+
+
+.saludo{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-size:
+    clamp(
+        19px,
+        3vw,
+        27px
+    );
+
+    color:#dbccaa;
+
+    margin-bottom:16px;
+
+}
+
+
+.descripcion{
+
+    max-width:570px;
+
+    color:#989287;
+
+    font-size:
+    clamp(
+        14px,
+        2vw,
+        17px
+    );
+
+    line-height:1.85;
+
+}
+
+
+.separador{
+
+    width:85px;
+    height:1px;
+
+    margin-top:34px;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        var(--dorado),
+        transparent
+    );
+
+}
+
+
+/* =========================================================
+   ZONA DE BOTONES
+========================================================= */
+
+.explorar{
+
+    padding:
+
+    35px 0
+    75px;
+
+}
+
+
+.titulo-seccion{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+
+.titulo-seccion span{
+
+    color:#aa925d;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+}
+
+
+.titulo-seccion h2{
+
+    margin-top:10px;
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-size:
+    clamp(
+        25px,
+        4vw,
+        36px
+    );
+
+    font-weight:400;
+
+    color:#eee6d5;
+
+}
+
+
+/* =========================================================
+   GRID 5 BOTONES
+========================================================= */
+
+.grid-opciones{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(6,1fr);
+
+    gap:16px;
+
+}
+
+
+/* tres arriba */
+
+.tarjeta:nth-child(1),
+.tarjeta:nth-child(2),
+.tarjeta:nth-child(3){
+
+    grid-column:
+    span 2;
+
+}
+
+
+/* dos abajo centradas */
+
+.tarjeta:nth-child(4){
+
+    grid-column:
+    2 / span 2;
+
+}
+
+
+.tarjeta:nth-child(5){
+
+    grid-column:
+    4 / span 2;
+
+}
+
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.tarjeta{
+
+    position:relative;
+
+    min-height:205px;
+
+    padding:
+    29px 23px;
+
+    border:
+
+    1px solid
+    rgba(225,185,80,.22);
+
+
+    border-radius:22px;
+
+
+    background:
+
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(229,187,75,.075),
+        transparent 48%
+    ),
+
+    linear-gradient(
+        145deg,
+        rgba(18,17,13,.88),
+        rgba(7,7,6,.94)
+    );
+
+
+    display:flex;
+
     flex-direction:column;
+
+    justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
-    padding:
-        45px 20px
-        30px;
-}
 
+    cursor:pointer;
 
-/* =========================================================
-   TEXTO INICIAL
-========================================================= */
+    overflow:hidden;
 
-.introduccion{
-    position:relative;
-    z-index:5;
+    transition:
 
-    max-width:800px;
-
-    animation:
-        aparecerTexto
-        1.8s ease;
-}
-
-@keyframes aparecerTexto{
-
-    from{
-        opacity:0;
-        transform:translateY(-20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
 
 }
 
 
-.introduccion h1{
+.tarjeta::before{
 
-    font-size:
-        clamp(27px,4vw,48px);
+    content:"";
 
-    font-weight:300;
+    position:absolute;
 
-    letter-spacing:1px;
+    inset:0;
 
-    color:#fff;
+    opacity:0;
+
+    transition:.4s;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 45%,
+        rgba(239,197,91,.10),
+        transparent 55%
+    );
+
 }
 
 
-.introduccion h1 span{
+.tarjeta:hover{
 
-    color:#ffe274;
+    transform:
+    translateY(-7px);
 
-    text-shadow:
-        0 0 20px
-        rgba(255,218,80,.25);
+    border-color:
+    rgba(233,197,102,.55);
+
+
+    box-shadow:
+
+    0 22px 60px
+    rgba(0,0,0,.48),
+
+    0 0 25px
+    rgba(224,176,55,.055);
+
 }
 
 
-.introduccion p{
+.tarjeta:hover::before{
 
-    margin-top:15px;
+    opacity:1;
 
-    color:#a8a39a;
-
-    line-height:1.7;
-
-    font-size:
-        clamp(14px,2vw,17px);
 }
 
 
-/* =========================================================
-   ESCENA
-========================================================= */
-
-.escena{
+.icono{
 
     position:relative;
 
-    width:min(540px,95vw);
+    font-size:34px;
 
-    margin-top:15px;
-}
+    margin-bottom:18px;
 
-
-/* =========================================================
-   SVG DEL GIRASOL
-========================================================= */
-
-#jardin{
-
-    width:100%;
-
-    height:auto;
-
-    overflow:visible;
-}
-
-
-/* =========================================================
-   MACETERO
-========================================================= */
-
-.macetero{
-
-    filter:
-        drop-shadow(
-            0 20px 18px
-            rgba(0,0,0,.45)
-        );
-}
-
-
-/* =========================================================
-   SEMILLA
-========================================================= */
-
-#semilla{
-
-    cursor:pointer;
-
-    transform-origin:center;
-
-    animation:
-        semillaFlotar
-        2s ease-in-out infinite;
-
-    transition:.3s;
-
-    filter:
-        drop-shadow(
-            0 0 10px
-            rgba(255,202,40,.4)
-        );
-}
-
-
-#semilla:hover{
-
-    filter:
-        drop-shadow(
-            0 0 22px
-            rgba(255,211,50,.8)
-        );
-}
-
-
-@keyframes semillaFlotar{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
+    z-index:2;
 
 }
 
 
-/* CAÍDA */
+.tarjeta h3{
 
-#semilla.cayendo{
+    position:relative;
 
-    animation:
-        caerSemilla
-        1.25s
-        cubic-bezier(.5,.05,.85,.2)
-        forwards;
-}
+    z-index:2;
 
+    color:#ead79b;
 
-@keyframes caerSemilla{
-
-    0%{
-        transform:
-            translateY(0)
-            rotate(0deg);
-    }
-
-    65%{
-        transform:
-            translateY(425px)
-            rotate(300deg);
-    }
-
-    82%{
-        transform:
-            translateY(440px)
-            rotate(350deg);
-    }
-
-    92%{
-        transform:
-            translateY(431px)
-            rotate(370deg);
-    }
-
-    100%{
-        transform:
-            translateY(440px)
-            rotate(380deg);
-
-        opacity:0;
-    }
-
-}
-
-
-/* =========================================================
-   INDICACIÓN DE LA SEMILLA
-========================================================= */
-
-#instruccionSemilla{
-
-    margin-top:-25px;
-
-    color:#c9bd87;
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    animation:
-        respirarTexto
-        1.8s infinite;
-}
-
-
-@keyframes respirarTexto{
-
-    50%{
-        opacity:.3;
-    }
-
-}
-
-
-/* =========================================================
-   TALLO
-========================================================= */
-
-#tallo{
-
-    stroke:#5b8e31;
-
-    stroke-width:15;
-
-    stroke-linecap:round;
-
-    fill:none;
-
-    stroke-dasharray:260;
-
-    stroke-dashoffset:260;
-
-    filter:
-        drop-shadow(
-            0 0 8px
-            rgba(88,150,45,.25)
-        );
-
-    transition:
-        stroke-dashoffset
-        2.5s ease;
-}
-
-
-#tallo.crecer{
-
-    stroke-dashoffset:0;
-}
-
-
-/* =========================================================
-   HOJAS
-========================================================= */
-
-.hoja{
-
-    opacity:0;
-
-    transform:
-        scale(.15);
-
-    transform-box:fill-box;
-    transform-origin:center;
-
-    transition:
-        opacity .9s ease,
-        transform .9s
-        cubic-bezier(.2,.8,.3,1.4);
-
-    cursor:pointer;
-}
-
-
-.hoja.visible{
-
-    opacity:1;
-    transform:scale(1);
-}
-
-
-.hoja:hover{
-
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(126,190,70,.55)
-        );
-}
-
-
-/* =========================================================
-   FLOR
-========================================================= */
-
-#florCompleta{
-
-    transform-origin:
-        250px 220px;
-}
-
-
-/* =========================================================
-   PÉTALOS
-========================================================= */
-
-.petalo{
-
-    opacity:0;
-
-    transform:scale(.15);
-
-    transform-box:fill-box;
-    transform-origin:center;
-
-    transition:
-
-        opacity .75s ease,
-
-        transform .75s
-        cubic-bezier(.2,.9,.3,1.35),
-
-        filter .3s ease;
-
-    cursor:pointer;
-}
-
-
-.petalo.visible{
-
-    opacity:1;
-
-    transform:scale(1);
-}
-
-
-.petalo.desbloqueado:hover{
-
-    filter:
-        brightness(1.22)
-        drop-shadow(
-            0 0 16px
-            #ffd21f
-        );
-}
-
-
-.petalo.leido{
-
-    filter:
-        brightness(1.20)
-        drop-shadow(
-            0 0 10px
-            #ffde55
-        );
-}
-
-
-/* =========================================================
-   CENTRO DE LA FLOR
-========================================================= */
-
-#centroGrupo{
-
-    opacity:0;
-
-    transform:
-        scale(.1);
-
-    transform-origin:
-        250px 220px;
-
-    transition:
-        opacity 1s ease,
-        transform 1s
-        cubic-bezier(.2,.8,.3,1.4);
-
-    cursor:pointer;
-}
-
-
-#centroGrupo.visible{
-
-    opacity:1;
-
-    transform:scale(1);
-}
-
-
-#centroGrupo:hover{
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(255,193,0,.6)
-        );
-}
-
-
-.texto-centro{
-
-    pointer-events:none;
-
-    text-anchor:middle;
-
-    fill:#f9d56b;
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    font-weight:600;
-
-    letter-spacing:.7px;
-}
-
-
-/* =========================================================
-   MENSAJE CUANDO TERMINA DE CRECER
-========================================================= */
-
-#mensajeFlorecer{
-
-    opacity:0;
-
-    margin-top:-10px;
-
-    color:#d5c88c;
-
-    font-size:
-        clamp(14px,2vw,17px);
-
-    letter-spacing:1px;
-
-    line-height:1.6;
-
-    transition:
-        opacity 1.5s ease;
-}
-
-
-#mensajeFlorecer.visible{
-
-    opacity:1;
-}
-
-
-/* =========================================================
-   CONTADOR
-========================================================= */
-
-#contador{
-
-    opacity:0;
-
-    margin-top:12px;
-
-    color:#6d695f;
-
-    font-size:12px;
+    font-size:13px;
 
     letter-spacing:2px;
 
-    transition:.8s;
+    font-weight:600;
+
+    margin-bottom:10px;
+
 }
 
 
-#contador.visible{
+.tarjeta p{
 
-    opacity:1;
+    position:relative;
+
+    z-index:2;
+
+    color:#8e897e;
+
+    font-size:13px;
+
+    line-height:1.6;
+
 }
 
 
 /* =========================================================
-   MODAL DE MENSAJES
+   PRÓXIMA ACTUALIZACIÓN
 ========================================================= */
 
-#modal{
+.proxima{
+
+    margin:
+
+    15px 0
+    90px;
+
+
+    padding:
+
+    75px 20px;
+
+
+    border-top:
+
+    1px solid
+    rgba(222,183,78,.16);
+
+
+    text-align:center;
+
+}
+
+
+.proxima .next{
+
+    color:#ae9250;
+
+    letter-spacing:4px;
+
+    font-size:10px;
+
+}
+
+
+.proxima h2{
+
+    margin-top:17px;
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+
+    font-size:
+
+    clamp(
+        39px,
+        7vw,
+        66px
+    );
+
+
+    font-weight:400;
+
+    color:#e5ca79;
+
+}
+
+
+.proxima p{
+
+    margin-top:12px;
+
+    color:#78746c;
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-style:italic;
+
+    font-size:16px;
+
+}
+
+
+.mini-linea{
+
+    width:100px;
+    height:1px;
+
+    margin:
+
+    30px auto
+    0;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        #c9a348,
+        transparent
+    );
+
+    animation:
+    brilloLinea
+    2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes brilloLinea{
+
+    50%{
+
+        width:145px;
+
+        opacity:.45;
+
+    }
+
+}
+
+
+/* =========================================================
+   MODALES
+========================================================= */
+
+.modal{
 
     position:fixed;
 
     inset:0;
 
-    z-index:100;
+    z-index:500;
 
     display:flex;
 
     justify-content:center;
     align-items:center;
 
-    padding:20px;
+    padding:24px;
 
     background:
-        rgba(0,0,0,.83);
+    rgba(0,0,0,.86);
 
     backdrop-filter:
-        blur(12px);
+    blur(14px);
 
     opacity:0;
 
     visibility:hidden;
 
-    transition:.4s;
+    pointer-events:none;
+
+    transition:
+    .4s ease;
+
 }
 
 
-#modal.activo{
+.modal.activo{
 
     opacity:1;
 
     visibility:visible;
+
+    pointer-events:auto;
+
 }
 
 
@@ -647,57 +1016,76 @@ body{
     position:relative;
 
     width:
-        min(500px,94vw);
+    min(
+        570px,
+        96vw
+    );
+
+    max-height:90vh;
+
+    overflow:auto;
 
     padding:
-        48px 35px
-        38px;
 
-    border-radius:30px;
+    48px 35px
+    38px;
+
+
+    border-radius:27px;
+
+
+    border:
+
+    1px solid
+    rgba(230,189,78,.40);
+
 
     background:
 
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(255,216,65,.13),
-            transparent 45%
-        ),
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(224,179,65,.11),
+        transparent 43%
+    ),
 
-        linear-gradient(
-            150deg,
-            #17150d,
-            #070706
-        );
+    linear-gradient(
+        145deg,
+        #17140c,
+        #070706
+    );
 
-    border:
-        1px solid
-        rgba(255,222,105,.38);
 
     box-shadow:
 
-        0 0 60px
-        rgba(255,204,35,.12),
+    0 40px 110px
+    rgba(0,0,0,.9),
 
-        inset 0 1px
-        rgba(255,255,255,.06);
+    0 0 55px
+    rgba(216,169,48,.07);
+
 
     text-align:center;
 
+
     transform:
-        scale(.85)
-        translateY(30px);
+
+    translateY(28px)
+    scale(.94);
+
 
     transition:
-        transform .45s ease;
+    .45s ease;
+
 }
 
 
-#modal.activo
+.modal.activo
 .modal-contenido{
 
     transform:
-        scale(1)
-        translateY(0);
+    translateY(0)
+    scale(1);
+
 }
 
 
@@ -705,140 +1093,478 @@ body{
 
     position:absolute;
 
-    top:13px;
-    right:18px;
+    top:15px;
+    right:19px;
+
+    width:35px;
+    height:35px;
 
     border:0;
 
     background:none;
 
-    color:#ffe477;
+    color:#d8bd70;
 
-    font-size:31px;
+    font-size:29px;
 
     cursor:pointer;
+
 }
 
 
-#modalIcono{
+.modal-icono{
 
-    font-size:50px;
+    font-size:42px;
+
+    margin-bottom:17px;
+
 }
 
 
-#modalTitulo{
+.modal h2{
 
-    margin-top:12px;
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-    color:#ffe477;
+
+    color:#ecd58d;
 
     font-size:
-        clamp(23px,4vw,29px);
+    clamp(
+        27px,
+        5vw,
+        39px
+    );
 
     font-weight:400;
+
+    margin-bottom:20px;
+
 }
 
 
-#modalTexto{
+.modal-texto{
 
-    margin-top:20px;
-
-    color:#d2d0c9;
+    color:#beb8ac;
 
     font-size:
-        clamp(15px,2vw,17px);
+    15px;
 
-    line-height:1.85;
+    line-height:1.9;
 
-    white-space:pre-line;
+}
+
+
+.modal-texto strong{
+
+    color:#f1d989;
+
+}
+
+
+.modal-texto em{
+
+    color:#ddc67e;
+
 }
 
 
 /* =========================================================
-   FINAL
+   IMAGEN DEL ABRAZO
 ========================================================= */
 
-#finalEspecial{
+.imagen-abrazo{
 
-    display:none;
+    display:block;
+
+    width:100%;
+
+    max-width:430px;
 
     margin:
-        20px auto 50px;
 
-    max-width:650px;
+    10px auto
+    20px;
 
-    padding:25px;
+    border-radius:21px;
 
-    opacity:0;
+    border:
 
-    transition:1.2s;
+    1px solid
+    rgba(230,190,83,.26);
+
+
+    box-shadow:
+
+    0 20px 55px
+    rgba(0,0,0,.6);
+
 }
 
 
-#finalEspecial.visible{
+/* =========================================================
+   HOW ARE YOU
+========================================================= */
 
-    opacity:1;
+.estados{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:25px;
+
 }
 
 
-#finalEspecial h2{
+.estado{
 
-    color:#ffe477;
+    border:
 
-    font-weight:300;
+    1px solid
+    rgba(226,187,82,.32);
 
-    font-size:
-        clamp(25px,4vw,37px);
+    border-radius:100px;
+
+    padding:
+
+    11px 17px;
+
+    background:
+    rgba(255,255,255,.025);
+
+    color:#d5c9a8;
+
+    font-size:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
 }
 
 
-#finalEspecial p{
+.estado:hover{
 
-    margin-top:17px;
+    transform:
+    translateY(-2px);
+
+    color:#ffe399;
+
+    border-color:
+    rgba(241,205,107,.65);
+
+}
+
+
+#respuestaEstado{
+
+    min-height:75px;
+
+    margin-top:25px;
+
+    padding-top:20px;
+
+    border-top:
+
+    1px solid
+    rgba(224,184,79,.13);
+
+    color:#c2baaa;
 
     line-height:1.8;
 
-    color:#aaa79e;
+    opacity:0;
+
+    transition:.5s;
+
+}
+
+
+#respuestaEstado.visible{
+
+    opacity:1;
+
 }
 
 
 /* =========================================================
-   TELÉFONO
+   VIDEO
 ========================================================= */
 
-@media(max-width:600px){
+.modal-video{
+
+    width:
+    min(
+        760px,
+        96vw
+    );
+
+}
+
+
+#videoJhos{
+
+    display:block;
+
+    width:100%;
+
+    max-height:68vh;
+
+    margin-top:15px;
+
+    border-radius:18px;
+
+    background:#000;
+
+    box-shadow:
+
+    0 20px 60px
+    rgba(0,0,0,.7);
+
+}
+
+
+/* =========================================================
+   MODAL FLOR
+========================================================= */
+
+.modal-flor{
+
+    width:
+    min(
+        950px,
+        98vw
+    );
+
+    height:
+    min(
+        88vh,
+        900px
+    );
+
+    padding:12px;
+
+}
+
+
+#iframeFlor{
+
+    width:100%;
+    height:100%;
+
+    border:0;
+
+    border-radius:18px;
+
+    background:#020202;
+
+}
+
+
+/* =========================================================
+   BOTÓN CERRAR NORMAL
+========================================================= */
+
+.boton-cerrar{
+
+    margin-top:28px;
+
+    border:
+
+    1px solid
+    rgba(225,186,80,.38);
+
+    border-radius:100px;
+
+    padding:
+
+    11px 24px;
+
+    background:
+    rgba(15,14,10,.7);
+
+    color:#d9c68f;
+
+    cursor:pointer;
+
+    letter-spacing:2px;
+
+    font-size:10px;
+
+    transition:.3s;
+
+}
+
+
+.boton-cerrar:hover{
+
+    border-color:
+    #d8b657;
+
+    color:#f3dc99;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(
+    max-width:800px
+){
+
+    .portada{
+
+        min-height:62vh;
+
+        padding:
+
+        95px 10px
+        50px;
+
+    }
+
+
+    .grid-opciones{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+
+    .tarjeta:nth-child(n){
+
+        grid-column:auto;
+
+    }
+
+
+    .tarjeta:nth-child(5){
+
+        grid-column:
+        1 / -1;
+
+        width:calc(50% - 8px);
+
+        justify-self:center;
+
+    }
+
+}
+
+
+@media(
+    max-width:560px
+){
 
     .pagina{
 
-        padding-top:35px;
+        width:
+        min(
+            100% - 26px,
+            1180px
+        );
+
     }
 
 
-    .escena{
+    .portada{
+
+        min-height:60vh;
+
+        align-items:center;
+
+        padding:
+
+        90px 5px
+        40px;
+
+    }
+
+
+    .portada h1{
+
+        font-size:
+        clamp(
+            46px,
+            15vw,
+            67px
+        );
+
+    }
+
+
+    .grid-opciones{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .tarjeta:nth-child(n){
+
+        grid-column:auto;
 
         width:100%;
+
     }
 
 
-    .introduccion p{
+    .tarjeta{
 
-        max-width:330px;
+        min-height:155px;
 
-        margin-left:auto;
-        margin-right:auto;
+    }
+
+
+    .modal{
+
+        padding:15px;
+
     }
 
 
     .modal-contenido{
 
         padding:
-            45px 25px
-            30px;
+
+        45px 22px
+        30px;
+
+    }
+
+
+    .modal-flor{
+
+        width:98vw;
+        height:92vh;
+
+        padding:8px;
+
+    }
+
+
+    .proxima{
+
+        padding:
+
+        60px 15px;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -847,953 +1573,334 @@ body{
 
 <div class="fondo"></div>
 
+<div class="linea uno"></div>
 
-<!-- ======================================================
-     PÁGINA
-====================================================== -->
+<div class="linea dos"></div>
+
+<div id="particulas"></div>
+
+
+
+<!-- =========================================================
+     MÚSICA DE FONDO
+========================================================= -->
+
+<audio
+id="musicaFondo"
+loop
+preload="auto"
+>
+
+    <source
+    src="./musica-fondo.mp3"
+    type="audio/mpeg"
+    >
+
+</audio>
+
+
+<button
+id="botonMusica"
+onclick="controlarMusica()"
+title="Música"
+>
+
+🔊
+
+</button>
+
+
 
 <main class="pagina">
 
 
-<!-- ======================================================
-     INTRODUCCIÓN
-====================================================== -->
+<!-- =========================================================
+     PORTADA
+========================================================= -->
 
-<section class="introduccion">
+<section class="portada">
 
-<h1>
 
-Hoy quise sembrar
-<span>algo especial para ti...</span>
+<div class="portada-contenido">
 
-</h1>
 
+    <div class="volumen">
 
-<p>
+        28/09 
 
-Porque en el día de las flores amarillas,
-no quería regalarte solamente una flor.
+    </div>
 
-Quería regalarte algo que pudieras
-descubrir poco a poco.
 
-</p>
+    <h1>
 
-</section>
+        Hola,
+        <span>Jhoselin</span>
+        
 
+    </h1>
 
 
-<!-- ======================================================
-     ESCENA DEL GIRASOL
-====================================================== -->
+    <div class="saludo">
 
-<section class="escena">
+        Qué gusto saber
+        que pasaste por aquí.
 
+    </div>
 
-<svg
-id="jardin"
-viewBox="0 0 500 650"
-xmlns="http://www.w3.org/2000/svg"
->
 
+    <p class="descripcion">
 
-<!-- ===========================
-     MACETERO
-=========================== -->
+        Estamos preparando algo nuevo
+        para este espacio.
 
-<g class="macetero">
+        <br><br>
 
+        Mientras tanto,
+        hay algunas pequeñas cosas
+        que puedes encontrar por aquí.
 
-<!-- sombra -->
+    </p>
 
-<ellipse
 
-cx="250"
-cy="625"
+    <div class="separador"></div>
 
-rx="100"
-ry="16"
 
-fill="rgba(0,0,0,.38)"
-
-/>
-
-
-<!-- maceta -->
-
-<path
-
-d="
-M165 520
-L335 520
-L312 625
-Q250 645 188 625
-Z
-"
-
-fill="url(#macetaGradiente)"
-
-/>
-
-
-<!-- borde superior -->
-
-<rect
-
-x="151"
-y="505"
-
-width="198"
-height="35"
-
-rx="13"
-
-fill="#bd6d33"
-
-/>
-
-
-<!-- tierra -->
-
-<ellipse
-
-cx="250"
-cy="508"
-
-rx="85"
-ry="13"
-
-fill="#29170e"
-
-/>
-
-
-</g>
-
-
-
-<!-- ===========================
-     TALLO
-=========================== -->
-
-<path
-
-id="tallo"
-
-d="
-M250 510
-C248 450,
-255 370,
-250 282
-"
-
-/>
-
-
-
-<!-- ===========================
-     HOJA IZQUIERDA
-=========================== -->
-
-<g
-class="hoja"
-id="hoja1"
-onclick="abrirHoja(1)"
->
-
-<path
-
-d="
-M246 420
-C205 376,
-150 377,
-135 410
-
-C171 440,
-211 455,
-246 430
-Z
-"
-
-fill="url(#hojaGradiente)"
-
-/>
-
-<path
-
-d="
-M240 423
-C204 415,
-175 408,
-145 409
-"
-
-fill="none"
-stroke="#37651e"
-stroke-width="3"
-
-/>
-
-</g>
-
-
-
-<!-- ===========================
-     HOJA DERECHA
-=========================== -->
-
-<g
-class="hoja"
-id="hoja2"
-onclick="abrirHoja(2)"
->
-
-<path
-
-d="
-M254 374
-C290 330,
-345 331,
-365 363
-
-C334 400,
-292 411,
-254 389
-Z
-"
-
-fill="url(#hojaGradiente2)"
-
-/>
-
-<path
-
-d="
-M260 381
-C297 367,
-329 361,
-356 363
-"
-
-fill="none"
-stroke="#37651e"
-stroke-width="3"
-
-/>
-
-</g>
-
-
-
-<!-- ======================================================
-     FLOR
-====================================================== -->
-
-<g id="florCompleta">
-
-
-<!-- ===========================
-     PÉTALO 1
-=========================== -->
-
-<g
-transform="rotate(0 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="1"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(1)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 2 -->
-
-<g
-transform="rotate(30 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="2"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(2)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 3 -->
-
-<g
-transform="rotate(60 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="3"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(3)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 4 -->
-
-<g
-transform="rotate(90 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="4"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(4)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 5 -->
-
-<g
-transform="rotate(120 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="5"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(5)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 6 -->
-
-<g
-transform="rotate(150 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="6"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(6)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 7 -->
-
-<g
-transform="rotate(180 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="7"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(7)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 8 -->
-
-<g
-transform="rotate(210 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="8"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(8)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 9 -->
-
-<g
-transform="rotate(240 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="9"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(9)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 10 -->
-
-<g
-transform="rotate(270 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="10"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(10)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 11 -->
-
-<g
-transform="rotate(300 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="11"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(11)"
-/>
-
-</g>
-
-
-
-<!-- PÉTALO 12 -->
-
-<g
-transform="rotate(330 250 220)"
->
-
-<ellipse
-class="petalo"
-
-data-petalo="12"
-
-cx="250"
-cy="112"
-
-rx="34"
-ry="93"
-
-fill="url(#petaloGradiente)"
-
-onclick="abrirPetalo(12)"
-/>
-
-</g>
-
-
-
-<!-- ======================================================
-     CENTRO
-====================================================== -->
-
-<g
-id="centroGrupo"
-onclick="abrirCentro()"
->
-
-
-<circle
-
-cx="250"
-cy="220"
-
-r="91"
-
-fill="url(#centroGradiente)"
-
-stroke="#88500d"
-stroke-width="7"
-
-/>
-
-
-<circle
-
-cx="250"
-cy="220"
-
-r="75"
-
-fill="url(#semillasCentro)"
-
-/>
-
-
-<!-- TEXTO DEL CENTRO -->
-
-<text
-class="texto-centro"
-x="250"
-y="202"
-font-size="16"
->
-
-PARA TI
-
-</text>
-
-
-<text
-class="texto-centro"
-x="250"
-y="224"
-font-size="11"
->
-
-QUE HACES
-
-</text>
-
-
-<text
-class="texto-centro"
-x="250"
-y="243"
-font-size="10"
->
-
-BONITO MI MUNDO
-
-</text>
-
-
-<text
-class="texto-centro"
-x="250"
-y="266"
-font-size="18"
->
-
-♥
-
-</text>
-
-
-</g>
-
-
-</g>
-
-
-
-<!-- ======================================================
-     SEMILLA INICIAL
-====================================================== -->
-
-<g
-id="semilla"
-onclick="plantarSemilla()"
->
-
-
-<ellipse
-
-cx="250"
-cy="65"
-
-rx="14"
-ry="23"
-
-fill="url(#semillaGradiente)"
-
-transform="rotate(-20 250 65)"
-
-/>
-
-
-<path
-
-d="
-M245 49
-C253 56,
-255 68,
-252 82
-"
-
-stroke="rgba(255,255,255,.22)"
-
-stroke-width="3"
-
-fill="none"
-
-/>
-
-
-</g>
-
-
-
-<!-- ======================================================
-     GRADIENTES
-====================================================== -->
-
-<defs>
-
-
-<!-- pétalo -->
-
-<linearGradient
-id="petaloGradiente"
-x1="0"
-y1="0"
-x2="0"
-y2="1"
->
-
-<stop
-offset="0%"
-stop-color="#fff375"
-/>
-
-<stop
-offset="48%"
-stop-color="#ffd326"
-/>
-
-<stop
-offset="100%"
-stop-color="#f29b00"
-/>
-
-</linearGradient>
-
-
-
-<!-- centro -->
-
-<radialGradient id="centroGradiente">
-
-<stop
-offset="0%"
-stop-color="#76430c"
-/>
-
-<stop
-offset="70%"
-stop-color="#4b2507"
-/>
-
-<stop
-offset="100%"
-stop-color="#291102"
-/>
-
-</radialGradient>
-
-
-
-<!-- semillas internas -->
-
-<pattern
-id="semillasCentro"
-
-width="11"
-height="11"
-
-patternUnits="userSpaceOnUse"
->
-
-<circle
-cx="3"
-cy="3"
-r="2.2"
-fill="#2b1203"
-/>
-
-<circle
-cx="8"
-cy="8"
-r="1.8"
-fill="#9b6417"
-/>
-
-</pattern>
-
-
-
-<!-- hojas -->
-
-<linearGradient
-id="hojaGradiente"
-x1="0"
-y1="0"
-x2="1"
-y2="1"
->
-
-<stop
-offset="0%"
-stop-color="#82b844"
-/>
-
-<stop
-offset="100%"
-stop-color="#275c18"
-/>
-
-</linearGradient>
-
-
-<linearGradient
-id="hojaGradiente2"
-x1="1"
-y1="0"
-x2="0"
-y2="1"
->
-
-<stop
-offset="0%"
-stop-color="#82b844"
-/>
-
-<stop
-offset="100%"
-stop-color="#275c18"
-/>
-
-</linearGradient>
-
-
-
-<!-- maceta -->
-
-<linearGradient
-id="macetaGradiente"
-x1="0"
-y1="0"
-x2="1"
-y2="1"
->
-
-<stop
-offset="0%"
-stop-color="#da8441"
-/>
-
-<stop
-offset="50%"
-stop-color="#a75526"
-/>
-
-<stop
-offset="100%"
-stop-color="#663119"
-/>
-
-</linearGradient>
-
-
-
-<!-- semilla -->
-
-<linearGradient
-id="semillaGradiente"
-x1="0"
-y1="0"
-x2="1"
-y2="1"
->
-
-<stop
-offset="0%"
-stop-color="#dfae58"
-/>
-
-<stop
-offset="50%"
-stop-color="#795125"
-/>
-
-<stop
-offset="100%"
-stop-color="#33200e"
-/>
-
-</linearGradient>
-
-
-</defs>
-
-
-</svg>
-
-
-<p id="instruccionSemilla">
-
-✦ PRESIONA LA SEMILLA ✦
-
-</p>
-
-
-<p id="mensajeFlorecer">
-
-🌻 Cada pétalo guarda algo para ti.
-<br>
-Presiona cualquiera para descubrirlo.
-
-</p>
-
-
-<p id="contador">
-
-0 de 12 pétalos descubiertos
-
-</p>
+</div>
 
 
 </section>
 
 
 
-<!-- ======================================================
-     MENSAJE FINAL
-====================================================== -->
+<!-- =========================================================
+     5 BOTONES
+========================================================= -->
 
-<section id="finalEspecial">
-
-
-<h2>
-
-Una flor que no se marchita 🌻
-
-</h2>
+<section class="explorar">
 
 
-<p>
+<div class="titulo-seccion">
 
-Tal vez no sea una flor que puedas sostener
-entre tus manos, pero quería que esta pudiera
-quedarse contigo un poco más.
+    <span>
 
-Porque algunas personas merecen
-detalles que duren más que un solo día.
+        EXPLORE THIS SPACE
 
-</p>
+    </span>
+
+
+    <h2>
+
+        Hay algunas cosas por aquí...
+
+    </h2>
+
+</div>
+
+
+
+<div class="grid-opciones">
+
+
+    <!-- 1 - FLOR -->
+
+    <article
+    class="tarjeta"
+    onclick="abrirFlor()"
+    >
+
+        <div class="icono">
+
+            🌻
+
+        </div>
+
+
+        <h3>
+
+            THE FLOWER
+
+        </h3>
+
+
+        <p>
+
+            La flor sigue
+            guardada por aquí.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- 2 - ABRAZO -->
+
+    <article
+    class="tarjeta"
+    onclick="abrirModal('modalAbrazo')"
+    >
+
+        <div class="icono">
+
+            🤗
+
+        </div>
+
+
+        <h3>
+
+            A LITTLE HUG
+
+        </h3>
+
+
+        <p>
+
+            Un abrazito
+            guardado para ti.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- 3 - NOTA -->
+
+    <article
+    class="tarjeta"
+    onclick="abrirModal('modalNota')"
+    >
+
+        <div class="icono">
+
+            📝
+
+        </div>
+
+
+        <h3>
+
+            A LITTLE REMINDER
+
+        </h3>
+
+
+        <p>
+
+            Una pequeña nota
+            para seguir adelante.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- 4 - ESTADO -->
+
+    <article
+    class="tarjeta"
+    onclick="abrirModal('modalEstado')"
+    >
+
+        <div class="icono">
+
+            🌤️
+
+        </div>
+
+
+        <h3>
+
+            HOW ARE YOU TODAY?
+
+        </h3>
+
+
+        <p>
+
+            ¿Cómo te está
+            tratando el día?
+
+        </p>
+
+    </article>
+
+
+
+    <!-- 5 - VIDEO -->
+
+    <article
+    class="tarjeta"
+    onclick="abrirVideo()"
+    >
+
+        <div class="icono">
+
+            ⏯️
+
+        </div>
+
+
+        <h3>
+
+            30 SECONDS FOR YOU
+
+        </h3>
+
+
+        <p>
+
+            Take a little break.
+
+        </p>
+
+    </article>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     PRÓXIMA ACTUALIZACIÓN
+========================================================= -->
+
+<section class="proxima">
+
+
+    <div class="next">
+
+        Próx. act.
+
+    </div>
+
+
+    <h2>
+
+        SOON
+
+    </h2>
+
+
+    <p>
+
+        Dios te ama....
+
+    </p>
+    <p>
+
+        att.,
+         keven
+
+    </p>
+
+
+    <div class="mini-linea"></div>
 
 
 </section>
@@ -1803,41 +1910,445 @@ detalles que duren más que un solo día.
 
 
 
-<!-- ======================================================
-     MODAL
-====================================================== -->
+<!-- =========================================================
+     MODAL ABRAZO
+========================================================= -->
 
-<div id="modal">
+<div
+class="modal"
+id="modalAbrazo"
+>
 
 
 <div class="modal-contenido">
 
 
-<button
-class="cerrar"
-onclick="cerrarModal()"
->
+    <button
+    class="cerrar"
+    onclick="cerrarModal('modalAbrazo')"
+    >
 
-×
+        ×
 
-</button>
+    </button>
 
 
-<div id="modalIcono">
+    <div class="modal-icono">
 
-🌻
+        🤗🫂😊
+
+    </div>
+
+
+    <h2>
+
+        A little hug
+
+    </h2>
+
+
+    <img
+    class="imagen-abrazo"
+    src="./imagen-portada.png.png"
+    alt="Un pequeño abrazo"
+    >
+
+
+    <button
+    class="boton-cerrar"
+    onclick="cerrarModal('modalAbrazo')"
+    >
+
+        CLOSE
+
+    </button>
+
 
 </div>
 
 
-<h2 id="modalTitulo">
-
-Para ti
-
-</h2>
+</div>
 
 
-<p id="modalTexto"></p>
+
+<!-- =========================================================
+     MODAL NOTA
+========================================================= -->
+
+<div
+class="modal"
+id="modalNota"
+>
+
+
+<div class="modal-contenido">
+
+
+    <button
+    class="cerrar"
+    onclick="cerrarModal('modalNota')"
+    >
+
+        ×
+
+    </button>
+
+
+    <div class="modal-icono">
+
+        📖
+
+    </div>
+
+
+    <h2>
+
+        A little reminder
+
+    </h2>
+
+
+    <div class="modal-texto">
+
+
+        <strong>
+
+            Eclesiastés 3:1
+
+        </strong>
+
+
+        <br><br>
+
+
+        <em>
+
+            “Todo tiene su tiempo,
+            y todo lo que se quiere
+            debajo del cielo tiene su hora.”
+
+        </em>
+
+
+        <br><br>
+
+
+        A veces queremos que todo suceda rápido:
+        que lleguen las respuestas,
+        que cambien las cosas
+        y que nuestros sueños
+        se hagan realidad.
+
+
+        <br><br>
+
+
+        Pero Dios nos recuerda
+        que todo tiene su tiempo
+        y su momento.
+
+
+        <br><br>
+
+
+        Quizá hoy tuviste un mal dia o
+        una etapa difícil
+        y no entiendes por qué
+        estás pasando por eso,
+        pero eso no significa
+        que Dios se haya olvidado de ti.
+
+
+        <br><br>
+
+
+        Hay procesos que necesitan tiempo,
+        puertas que todavía no deben abrirse
+        y bendiciones
+        que están siendo preparadas.
+
+
+        <br><br>
+
+
+        No te desesperes
+        por lo que todavía no ha llegado.
+
+
+        <br><br>
+
+
+        Aprende a confiar
+        en el tiempo de Dios,
+        incluso cuando
+        no puedas entenderlo.
+
+
+        <br><br>
+
+
+        <strong>
+
+            Sigue caminando,
+            sigue creyendo
+            y no abandones tus sueños.
+
+        </strong>
+
+
+        <br><br>
+
+
+        Lo que hoy parece una espera,
+        mañana puede convertirse
+        en la respuesta
+        que tanto estabas esperando.
+
+
+        <br><br>
+
+
+        <strong>
+
+            Sigue adelante, Jhos 
+
+        </strong>
+
+
+    </div>
+
+
+    <button
+    class="boton-cerrar"
+    onclick="cerrarModal('modalNota')"
+    >
+
+        CLOSE
+
+    </button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL CÓMO ESTÁS
+========================================================= -->
+
+<div
+class="modal"
+id="modalEstado"
+>
+
+
+<div class="modal-contenido">
+
+
+    <button
+    class="cerrar"
+    onclick="cerrarModal('modalEstado')"
+    >
+
+        ×
+
+    </button>
+
+
+    <div class="modal-icono">
+
+        ☀️
+
+    </div>
+
+
+    <h2>
+
+        How are you today?
+
+    </h2>
+
+
+    <div class="modal-texto">
+
+        ¿Cómo te está tratando
+        el día de hoy?
+
+    </div>
+
+
+    <div class="estados">
+
+
+        <button
+        class="estado"
+        onclick="seleccionarEstado('bien')"
+        >
+
+            😊 BIEN
+
+        </button>
+
+
+        <button
+        class="estado"
+        onclick="seleccionarEstado('vamos')"
+        >
+
+            😐 AHÍ VAMOS
+
+        </button>
+
+
+        <button
+        class="estado"
+        onclick="seleccionarEstado('descanso')"
+        >
+
+            😴 NECESITO DESCANSAR
+
+        </button>
+
+
+    </div>
+
+
+    <div id="respuestaEstado"></div>
+
+
+    <button
+    class="boton-cerrar"
+    onclick="cerrarModal('modalEstado')"
+    >
+
+        CLOSE
+
+    </button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL VIDEO
+========================================================= -->
+
+<div
+class="modal"
+id="modalVideo"
+>
+
+
+<div class="modal-contenido modal-video">
+
+
+    <button
+    class="cerrar"
+    onclick="cerrarVideo()"
+    >
+
+        ×
+
+    </button>
+
+
+    <div class="modal-icono">
+
+        🎬
+
+    </div>
+
+
+    <h2>
+
+        30 seconds for you
+
+    </h2>
+
+
+    <div class="modal-texto">
+
+        Take a little break.
+
+    </div>
+
+
+    <video
+    id="videoJhos"
+    controls
+    playsinline
+    preload="metadata"
+    >
+
+        <source
+        src="./video-jhos.mp4"
+        type="video/mp4"
+        >
+
+        Tu navegador no puede
+        reproducir este video.
+
+    </video>
+
+
+    <button
+    class="boton-cerrar"
+    onclick="cerrarVideo()"
+    >
+
+        CLOSE
+
+    </button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL FLOR
+========================================================= -->
+
+<div
+class="modal"
+id="modalFlor"
+>
+
+
+<div class="modal-contenido modal-flor">
+
+
+    <button
+    class="cerrar"
+    onclick="cerrarModal('modalFlor')"
+    style="
+        z-index:20;
+        background:rgba(0,0,0,.65);
+        border-radius:50%;
+    "
+    >
+
+        ×
+
+    </button>
+
+
+    <iframe
+    id="iframeFlor"
+    src="./flor.html"
+    title="La flor amarilla"
+    loading="lazy"
+    ></iframe>
 
 
 </div>
@@ -1849,744 +2360,831 @@ Para ti
 
 <script>
 
-/* =========================================================
-   MENSAJES DE LOS PÉTALOS
-========================================================= */
-
-const mensajesPetalos = {
-
-
-1:{
-icono:"30",
-titulo:"Un espacio para ti, jhos ",
-
-texto:
-`Hoy quería darte flores amarillas...
-
-pero también quería regalarte
-algo que pudiera quedarse
-un poquito más de tiempo contigo.`
-},
-
-
-2:{
-icono:"💛",
-titulo:"Algo especial",
-
-texto:
-`Hay personas que hacen que un día normal
-se sienta un poquito diferente.
-
-Y para mí,
-tú eres una de esas personas.`
-},
-
-
-3:{
-icono:"☀️",
-titulo:"Tu propia luz",
-
-texto:
-`Así como un girasol busca la luz,
-deseo que tú siempre encuentres
-la tuya.
-
-Incluso en aquellos días
-que parezcan un poco más oscuros.`
-},
-
-
-4:{
-icono:"✨",
-titulo:"No lo olvides",
-
-texto:
-`Nunca olvides lo valiosa
-que puedes llegar a ser.
-
-A veces uno mismo no alcanza
-a ver todas las cosas bonitas
-que los demás sí pueden notar.`
-},
-
-
-5:{
-icono:"🌼",
-titulo:"Tu sonrisa",
-
-texto:
-`Espero que nunca te falten
-razones para sonreír.
-
-Y si alguna vez faltan,
-ojalá aparezca una pequeña
-razón inesperada para hacerlo.`
-},
-
-
-6:{
-icono:"💫",
-titulo:"Tus sueños",
-
-texto:
-`Que nunca dejes de perseguir
-las cosas que sueñas.
-
-Incluso cuando parezcan lejanas.
-
-Las flores tampoco aparecen
-de un momento a otro.
-
-Primero necesitan crecer.`
-},
-
-
-7:{
-icono:"💛",
-titulo:"Porque eres tú",
-
-texto:
-`No tienes que convertirte
-en alguien diferente
-para ser especial.
-
-Hay cosas bonitas
-precisamente en tu manera
-de ser tú.`
-},
-
-
-8:{
-icono:"🌻",
-titulo:"Flores amarillas",
-
-texto:
-`Hoy muchas personas
-regalarán flores amarillas.
-
-Yo simplemente quería
-que la tuya fuera diferente.
-
-Una flor que escondiera
-pequeñas palabras para ti.`
-},
-
-
-9:{
-icono:"✨",
-titulo:"Una coincidencia bonita",
-
-texto:
-`Entre tantas personas,
-tantos lugares
-y tantos momentos...
-
-me parece bonito
-que nuestros caminos
-hayan coincidido.`
-},
-
-
-10:{
-icono:"🌼",
-titulo:"Para tus días",
-
-texto:
-`Deseo que tengas días tranquilos,
-personas sinceras,
-muchas risas
-y momentos que quieras recordar.
-
-Porque también mereces
-cosas bonitas.`
-},
-
-
-11:{
-icono:"💛",
-titulo:"Un pequeño recuerdo",
-
-texto:
-`Quizá algún día recuerdes
-esta pequeña flor.
-
-Y si ocurre,
-espero que recuerdes también
-que alguien quiso dedicar
-un momento de su tiempo
-solo para hacerte sonreír.`
-},
-
-
-12:{
-icono:"🌻",
-titulo:"El último pétalo",
-
-texto:
-`Y llegaste al último pétalo...
-
-Solo quería decirte:
-
-gracias por ser esa persona
-tan especial que inspiró
-todo este pequeño girasol.
-
-Feliz día de las flores amarillas. 💛`
-}
-
-};
-
-
-
-/* =========================================================
-   MENSAJES DE LAS HOJAS
-========================================================= */
-
-const mensajesHojas = {
-
-
-1:{
-
-icono:"🍃",
-
-titulo:"Lo que hay debajo de una flor",
-
-texto:
-`Una flor bonita no está formada
-solamente por sus pétalos.
-
-También necesita raíces,
-tiempo, paciencia y cuidado.
-
-Espero que todo aquello
-que estés construyendo en tu vida
-pueda crecer de la misma manera.`
-
-},
-
-
-2:{
-
-icono:"🌱",
-
-titulo:"Sigue creciendo",
-
-texto:
-`No tienes que tener
-todo resuelto hoy.
-
-Sigue aprendiendo,
-sigue creciendo
-y sigue convirtiéndote
-en la persona que quieres ser.
-
-Lo bonito también necesita tiempo.`
-
-}
-
-};
-
-
 
 /* =========================================================
    VARIABLES
 ========================================================= */
 
-let plantado = false;
+const musicaFondo =
+document.getElementById(
+    "musicaFondo"
+);
 
-let florecido = false;
 
-const petalosLeidos =
-new Set();
+const botonMusica =
+document.getElementById(
+    "botonMusica"
+);
+
+
+const videoJhos =
+document.getElementById(
+    "videoJhos"
+);
+
+
+let musicaIniciada = false;
+
+let musicaSilenciada = false;
+
+let videoAbierto = false;
+
+let intervaloFade;
 
 
 
 /* =========================================================
-   PLANTAR SEMILLA
+   PARTÍCULAS DORADAS
 ========================================================= */
 
-function plantarSemilla(){
-
-if(plantado){
-return;
-}
-
-plantado=true;
+function crearParticulas(){
 
 
-const semilla=
-document.getElementById(
-"semilla"
-);
+    const contenedor =
+
+    document.getElementById(
+        "particulas"
+    );
 
 
-const instruccion=
-document.getElementById(
-"instruccionSemilla"
-);
+    for(
+        let i=0;
+        i<32;
+        i++
+    ){
 
 
-semilla.classList.add(
-"cayendo"
-);
+        const punto =
+
+        document.createElement(
+            "span"
+        );
 
 
-instruccion.style.opacity=
-"0";
+        punto.className =
+        "particula";
 
 
-/* TALLO */
+        punto.style.left =
 
-setTimeout(()=>{
-
-document.getElementById(
-"tallo"
-).classList.add(
-"crecer"
-);
-
-},1200);
+        Math.random()*100
+        +"%";
 
 
-/* PRIMERA HOJA */
+        punto.style.animationDuration =
 
-setTimeout(()=>{
-
-document.getElementById(
-"hoja1"
-).classList.add(
-"visible"
-);
-
-},2350);
+        (
+            8+
+            Math.random()*12
+        )
+        +"s";
 
 
-/* SEGUNDA HOJA */
+        punto.style.animationDelay =
 
-setTimeout(()=>{
-
-document.getElementById(
-"hoja2"
-).classList.add(
-"visible"
-);
-
-},3000);
+        Math.random()*10
+        +"s";
 
 
-/* ABRIR PÉTALOS */
+        const tamano =
 
-setTimeout(()=>{
+        1.5+
+        Math.random()*2.7;
 
-florecer();
 
-},3750);
+        punto.style.width =
+
+        tamano+"px";
+
+
+        punto.style.height =
+
+        tamano+"px";
+
+
+        contenedor.appendChild(
+            punto
+        );
+
+
+    }
+
 
 }
+
+
+crearParticulas();
 
 
 
 /* =========================================================
-   FLORECER
+   INICIAR MÚSICA SUAVE
 ========================================================= */
 
-function florecer(){
-
-const petalos=
-document.querySelectorAll(
-".petalo"
-);
+function iniciarMusica(){
 
 
-/* primero pétalos */
+    if(
+        musicaSilenciada
+        ||
+        videoAbierto
+    ){
 
-petalos.forEach(
-(petalo,index)=>{
+        return;
 
-setTimeout(()=>{
-
-petalo.classList.add(
-"visible"
-);
-
-},index*160);
-
-});
+    }
 
 
-/* centro */
-
-setTimeout(()=>{
-
-document.getElementById(
-"centroGrupo"
-).classList.add(
-"visible"
-);
-
-},1450);
+    musicaIniciada = true;
 
 
-/* activar interacción */
-
-setTimeout(()=>{
-
-petalos.forEach(
-petalo=>{
-
-petalo.classList.add(
-"desbloqueado"
-);
-
-});
+    clearInterval(
+        intervaloFade
+    );
 
 
-florecido=true;
+    musicaFondo
+    .play()
+
+    .then(()=>{
 
 
-document.getElementById(
-"mensajeFlorecer"
-).classList.add(
-"visible"
-);
+        if(
+            musicaFondo.volume
+            >
+            .28
+        ){
+
+            musicaFondo.volume=.28;
+
+        }
 
 
-document.getElementById(
-"contador"
-).classList.add(
-"visible"
-);
+        if(
+            musicaFondo.volume
+            ===0
+        ){
 
 
-},2200);
+            intervaloFade =
 
-}
-
-
-
-/* =========================================================
-   ABRIR PÉTALO
-========================================================= */
-
-function abrirPetalo(numero){
-
-if(!florecido){
-return;
-}
+            setInterval(()=>{
 
 
-const datos=
-mensajesPetalos[numero];
+                if(
+                    musicaFondo.volume
+                    <
+                    .27
+                ){
 
 
-document.getElementById(
-"modalIcono"
-).textContent=
-datos.icono;
+                    musicaFondo.volume =
+
+                    Math.min(
+                        musicaFondo.volume
+                        +.02,
+                        .28
+                    );
 
 
-document.getElementById(
-"modalTitulo"
-).textContent=
-datos.titulo;
+                }else{
 
 
-document.getElementById(
-"modalTexto"
-).textContent=
-datos.texto;
+                    clearInterval(
+                        intervaloFade
+                    );
 
 
-document.getElementById(
-"modal"
-).classList.add(
-"activo"
-);
+                }
 
 
-/* marcar como leído */
-
-petalosLeidos.add(
-numero
-);
+            },110);
 
 
-const petalo=
-document.querySelector(
-`[data-petalo="${numero}"]`
-);
+        }
 
 
-petalo.classList.add(
-"leido"
-);
+    })
+
+    .catch(error=>{
 
 
-actualizarContador();
+        console.log(
+            "El navegador esperó una interacción para reproducir la música.",
+            error
+        );
+
+
+    });
+
 
 }
 
 
 
 /* =========================================================
-   CONTADOR
+   PRIMERA INTERACCIÓN = MÚSICA
 ========================================================= */
 
-function actualizarContador(){
-
-const cantidad=
-petalosLeidos.size;
+function primeraInteraccion(){
 
 
-document.getElementById(
-"contador"
-).textContent=
-
-cantidad+
-" de 12 pétalos descubiertos";
-
-
-/* todos leídos */
-
-if(cantidad===12){
-
-setTimeout(()=>{
-
-const final=
-document.getElementById(
-"finalEspecial"
-);
+    if(
+        !musicaIniciada
+        &&
+        !videoAbierto
+    ){
 
 
-final.style.display=
-"block";
+        musicaFondo.volume=0;
+
+        iniciarMusica();
 
 
-setTimeout(()=>{
+    }
 
-final.classList.add(
-"visible"
-);
-
-},100);
-
-
-},500);
 
 }
 
-}
-
-
-
-/* =========================================================
-   HOJAS
-========================================================= */
-
-function abrirHoja(numero){
-
-if(!florecido){
-return;
-}
-
-
-const datos=
-mensajesHojas[numero];
-
-
-document.getElementById(
-"modalIcono"
-).textContent=
-datos.icono;
-
-
-document.getElementById(
-"modalTitulo"
-).textContent=
-datos.titulo;
-
-
-document.getElementById(
-"modalTexto"
-).textContent=
-datos.texto;
-
-
-document.getElementById(
-"modal"
-).classList.add(
-"activo"
-);
-
-}
-
-
-
-/* =========================================================
-   CENTRO DEL GIRASOL
-========================================================= */
-
-function abrirCentro(){
-
-if(!florecido){
-return;
-}
-
-
-document.getElementById(
-"modalIcono"
-).textContent=
-"💛";
-
-
-document.getElementById(
-"modalTitulo"
-).textContent=
-"Para ti";
-
-
-document.getElementById(
-"modalTexto"
-).textContent=
-
-`Para ti,
-que haces bonito mi mundo.
-
-No sé cuánto pueda significar
-una pequeña flor hecha con código...
-
-pero detrás de ella existe
-algo muy sencillo:
-
-quise hacer algo bonito
-pensando especialmente en ti. 🌻`;
-
-
-document.getElementById(
-"modal"
-).classList.add(
-"activo"
-);
-
-}
-
-
-
-/* =========================================================
-   CERRAR MODAL
-========================================================= */
-
-function cerrarModal(){
-
-document.getElementById(
-"modal"
-).classList.remove(
-"activo"
-);
-
-}
-
-
-
-/* cerrar tocando afuera */
-
-document.getElementById(
-"modal"
-).addEventListener(
-"click",
-function(event){
-
-if(
-event.target===this
-){
-
-cerrarModal();
-
-}
-
-}
-);
-
-
-
-/* ESC */
 
 document.addEventListener(
-"keydown",
-function(event){
 
-if(
-event.key==="Escape"
-){
+    "pointerdown",
 
-cerrarModal();
+    primeraInteraccion,
 
-}
+    {
+        once:true,
+        capture:true
+    }
 
-}
 );
 
 
 
 /* =========================================================
-   LUCES DORADAS DEL FONDO
+   CONTROL DE MÚSICA
 ========================================================= */
 
-for(
-let i=0;
-i<38;
-i++
-){
-
-const luz=
-document.createElement(
-"span"
-);
+function controlarMusica(){
 
 
-luz.className=
-"luz";
+    if(
+        musicaSilenciada
+    ){
 
 
-const tamaño=
-Math.random()*3+1;
+        musicaSilenciada=false;
+
+        botonMusica.textContent=
+        "🔊";
 
 
-luz.style.width=
-tamaño+"px";
+        if(
+            !videoAbierto
+        ){
 
 
-luz.style.height=
-tamaño+"px";
+            iniciarMusica();
 
 
-luz.style.left=
-Math.random()*100+"%";
+        }
 
 
-luz.style.top=
-Math.random()*100+"%";
+    }else{
 
 
-luz.style.animationDelay=
-Math.random()*4+"s";
+        musicaSilenciada=true;
+
+        musicaFondo.pause();
+
+        botonMusica.textContent=
+        "🔇";
 
 
-luz.style.animationDuration=
-(
-Math.random()*3+2
-)+"s";
+    }
 
-
-document.body.appendChild(
-luz
-);
 
 }
+
+
+
+/* =========================================================
+   MODALES NORMALES
+========================================================= */
+
+function abrirModal(id){
+
+
+    cerrarOtrosModales(
+        id
+    );
+
+
+    document
+    .getElementById(id)
+    .classList
+    .add(
+        "activo"
+    );
+
+
+    document.body.style.overflow=
+    "hidden";
+
+
+    if(
+        !musicaIniciada
+        &&
+        !musicaSilenciada
+    ){
+
+
+        musicaFondo.volume=0;
+
+        iniciarMusica();
+
+
+    }
+
+
+}
+
+
+
+function cerrarModal(id){
+
+
+    document
+    .getElementById(id)
+    .classList
+    .remove(
+        "activo"
+    );
+
+
+    document.body.style.overflow=
+    "";
+
+
+}
+
+
+
+function cerrarOtrosModales(
+    excepto
+){
+
+
+    document
+    .querySelectorAll(
+        ".modal.activo"
+    )
+    .forEach(modal=>{
+
+
+        if(
+            modal.id
+            !==
+            excepto
+        ){
+
+
+            if(
+                modal.id
+                ===
+                "modalVideo"
+            ){
+
+
+                cerrarVideo(
+                    false
+                );
+
+
+            }else{
+
+
+                modal
+                .classList
+                .remove(
+                    "activo"
+                );
+
+
+            }
+
+
+        }
+
+
+    });
+
+
+}
+
+
+
+/* =========================================================
+   FLOR
+========================================================= */
+
+function abrirFlor(){
+
+
+    abrirModal(
+        "modalFlor"
+    );
+
+
+}
+
+
+
+/* =========================================================
+   HOW ARE YOU TODAY
+========================================================= */
+
+function seleccionarEstado(
+    estado
+){
+
+
+    const respuesta =
+
+    document.getElementById(
+        "respuestaEstado"
+    );
+
+
+    let texto = "";
+
+
+    if(
+        estado==="bien"
+    ){
+
+
+        texto =
+
+        `Me alegra saberlo. ✨
+
+        Ojalá el resto del día
+        siga tratándote bonito.`;
+
+
+    }
+
+
+    if(
+        estado==="vamos"
+    ){
+
+
+        texto =
+
+        `Y eso también cuenta. 🌻
+
+        No todos los días
+        tienen que ser perfectos.
+
+        A veces seguir avanzando
+        ya es suficiente.`;
+
+
+    }
+
+
+    if(
+        estado==="descanso"
+    ){
+
+
+        texto =
+
+        `Entonces date
+        un pequeño respiro. 🤍
+
+        Descansar también
+        es parte de seguir adelante.
+
+        Mañana se continúa.`;
+
+
+    }
+
+
+    respuesta.innerText =
+    texto;
+
+
+    respuesta
+    .classList
+    .remove(
+        "visible"
+    );
+
+
+    setTimeout(()=>{
+
+
+        respuesta
+        .classList
+        .add(
+            "visible"
+        );
+
+
+    },50);
+
+
+}
+
+
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+function abrirVideo(){
+
+
+    cerrarOtrosModales(
+        "modalVideo"
+    );
+
+
+    videoAbierto=true;
+
+
+    /* PAUSA MÚSICA PRINCIPAL */
+
+    musicaFondo.pause();
+
+
+    document
+    .getElementById(
+        "modalVideo"
+    )
+    .classList
+    .add(
+        "activo"
+    );
+
+
+    document.body.style.overflow=
+    "hidden";
+
+
+    videoJhos.currentTime=0;
+
+
+    videoJhos
+    .play()
+
+    .catch(error=>{
+
+
+        console.log(
+            "Presiona Play para iniciar el video.",
+            error
+        );
+
+
+    });
+
+
+}
+
+
+
+/* =========================================================
+   CERRAR VIDEO
+========================================================= */
+
+function cerrarVideo(
+    volverMusica=true
+){
+
+
+    videoJhos.pause();
+
+    videoJhos.currentTime=0;
+
+
+    videoAbierto=false;
+
+
+    document
+    .getElementById(
+        "modalVideo"
+    )
+    .classList
+    .remove(
+        "activo"
+    );
+
+
+    document.body.style.overflow=
+    "";
+
+
+    /* VOLVER A MÚSICA PRINCIPAL */
+
+    if(
+        volverMusica
+        &&
+        !musicaSilenciada
+    ){
+
+
+        iniciarMusica();
+
+
+    }
+
+
+}
+
+
+
+/* =========================================================
+   CUANDO TERMINA EL VIDEO
+========================================================= */
+
+videoJhos.addEventListener(
+
+    "ended",
+
+    function(){
+
+
+        videoAbierto=false;
+
+
+        if(
+            !musicaSilenciada
+        ){
+
+
+            iniciarMusica();
+
+
+        }
+
+
+    }
+
+);
+
+
+
+/* SI EL USUARIO PRESIONA PLAY MANUALMENTE */
+
+videoJhos.addEventListener(
+
+    "play",
+
+    function(){
+
+
+        videoAbierto=true;
+
+        musicaFondo.pause();
+
+
+    }
+
+);
+
+
+
+/* =========================================================
+   CERRAR MODALES TOCANDO AFUERA
+========================================================= */
+
+document
+.querySelectorAll(
+    ".modal"
+)
+.forEach(modal=>{
+
+
+    modal.addEventListener(
+
+        "click",
+
+        function(event){
+
+
+            if(
+                event.target
+                !==
+                modal
+            ){
+
+                return;
+
+            }
+
+
+            if(
+                modal.id
+                ===
+                "modalVideo"
+            ){
+
+
+                cerrarVideo();
+
+
+            }else{
+
+
+                cerrarModal(
+                    modal.id
+                );
+
+
+            }
+
+
+        }
+
+    );
+
+
+});
+
+
+
+/* =========================================================
+   TECLA ESC
+========================================================= */
+
+document.addEventListener(
+
+    "keydown",
+
+    function(event){
+
+
+        if(
+            event.key
+            !==
+            "Escape"
+        ){
+
+            return;
+
+        }
+
+
+        const modalActivo =
+
+        document.querySelector(
+            ".modal.activo"
+        );
+
+
+        if(
+            !modalActivo
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            modalActivo.id
+            ===
+            "modalVideo"
+        ){
+
+
+            cerrarVideo();
+
+
+        }else{
+
+
+            cerrarModal(
+                modalActivo.id
+            );
+
+
+        }
+
+
+    }
+
+);
+
 
 </script>
 
 
 </body>
-</html>
 
+</html>
